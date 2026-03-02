@@ -56,3 +56,29 @@ graph TD
     style B fill:#bbf,stroke:#333,stroke-width:2px
     style C fill:#bfb,stroke:#333,stroke-width:2px
 ```
+
+---
+
+## 5. API Reference (Mock)
+
+### 5.1 Create Diagnostic Task
+[cite_start]Submits a network segment to the **AI LLM Engine** for automated fault analysis. [cite: 654]
+
+* **Endpoint**: `/v1/network/diagnose`
+* **Method**: `POST`
+* **Content-Type**: `application/json`
+
+#### Request Parameters
+| Name | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `segment_id` | String | Yes | The ID of the network segment to diagnose. |
+| `agent_id` | String | Yes | [cite_start]ID of the **Fault handling expert** agent. [cite: 632] |
+| `priority` | Integer | No | Task priority (1-5), default is 3. |
+
+#### Response Example
+```json
+{
+  "task_id": "diag_20260302_001",
+  "status": "processing",
+  "estimated_time": "15s"
+}
