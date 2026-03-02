@@ -49,7 +49,7 @@ graph TD
     A[Data Engine] -- "Provide Resources" --> B[AI LLM Engine]
     A -- "Provide Resources" --> C[Digital Twin Engine]
     B -- "Model Construction Support" --> C
-    C -- "Generate New Data for Training" --> B
+    C -- "Generate Training Data" --> B
     C -- "Apply to Actual Scenarios" --> D((Closed-loop Innovation))
 
     style A fill:#f9f,stroke:#333,stroke-width:2px
