@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: AIR Net Diagnostic API
+  version: 1.0.0
+  description: 针对自智网络故障诊断引擎的模拟 API。
+
+paths:
+  /v1/network/diagnose:
+    post:
+      summary: 发起故障诊断任务
+      tags:
+        - "Fault Diagnosis" # 👈 给接口打个标签
+      description: 提交网元 ID 到 AI LLM 引擎进行自动化故障分析。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                segment_id:
+                  type: string
+                  description: 待诊断的网元段 ID。
+                  example: "SEG-99-B"
+                agent_id:
+                  type: string
+                  description: 负责该任务的专家智能体 ID。
+                priority:
+                  type: integer
+                  description: 优先级 (1-5)。
+                  default: 3
+      responses:
+        '200':
+          description: 任务提交成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task_id:
+                    type: string
+                  status:
+                    type: string
